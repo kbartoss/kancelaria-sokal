@@ -1,4 +1,21 @@
 @import 'tailwindcss';
+@plugin "daisyui";
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+  font-display: swap;
+}
+
+@theme {
+  --color-brand-black: #1a1a1a;
+  --color-brand-gray: #5a5a5a;
+  --color-brand-gray-light: #7a7a7a;
+  --color-brand-gold: #b1976b;
+  --font-sans:
+    'Roboto', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+}
 
 /* Globalne style */
 html {
@@ -6,5 +23,34 @@ html {
 }
 
 body {
-  font-family: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
+  background-color: #f2f2f7;
+}
+
+.nav-link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  width: 0;
+  background-color: var(--color-brand-gold);
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-link-underline:hover::after {
+  width: 100%;
+}
+
+/* Globalne transition */
+*,
+*::before,
+*::after {
+  transition: all 0.3s ease;
 }
